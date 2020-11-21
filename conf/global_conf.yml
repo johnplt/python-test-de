@@ -1,5 +1,0 @@
-paths:
-  drugs_path: C:\Users\johnp\PycharmProjects\python-test-de\data\drugs.csv
-  pubmed_csv_path: C:\Users\johnp\PycharmProjects\python-test-de\data\pubmed.csv
-  pubmed_json_path: C:\Users\johnp\PycharmProjects\python-test-de\data\pubmed.json
-  clinical_trials_path: C:\Users\johnp\PycharmProjects\python-test-de\data\clinical_trials.csv
