@@ -1,0 +1,5 @@
+paths:
+  drugs_path:
+  pubmed_csv_path:
+  pubmed_json_path:
+  clinical_trials_path:
