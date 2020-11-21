@@ -128,7 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Data
-data/
 conf/global_conf.yml
+# Data
+data
 .idea
