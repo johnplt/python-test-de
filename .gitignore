@@ -130,4 +130,5 @@ dmypy.json
 
 # Data
 data/
-global_conf.yml
+conf/global_conf.yml
+.idea
