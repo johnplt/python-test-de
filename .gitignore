@@ -132,3 +132,5 @@ conf/global_conf.yml
 # Data
 data/
 .idea
+results/
+logs/
