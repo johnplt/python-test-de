@@ -3,11 +3,9 @@
 import argparse
 import logging
 import traceback
-import utils
-import pipelines
+from python_test_de import utils, pipelines
 import pandas as pd
-import pandasql as ps
-
+import json
 from datetime import datetime
 
 if __name__ == '__main__':
@@ -23,25 +21,42 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     try:
+
         # Get the configuration files
-        global_cfg = utils.get_configuration(
+        cfg = utils.get_configuration(
             args.global_config_file_path
         )
-        drugs_df = pd.read_csv(global_cfg['paths']['drugs_path'])
-        clinical_trials_df = pd.read_csv(global_cfg['paths']['clinical_trials_path'])
-        pubmed_df = pd.concat(
-            [pd.read_csv(global_cfg['paths']['pubmed_csv_path']),
-            pd.read_json(global_cfg['paths']['pubmed_json_path'])]
+
+        # Log configuration
+        logging.basicConfig(
+            level=logging.INFO,
+            filename="{}{}.log".format(
+                cfg['paths']['logs_path'],
+                str(datetime.now().strftime('%Y%m%d_%H%M'))
+            ),
+            filemode='a'
         )
 
-        print(pubmed_df['date'])
+        # Generate link graph
+        logging.info('Started link graph generation')
+        pipelines.generate_link_graph_json(cfg)
 
-        # print(pipelines.get_pudmed_mentions(drugs_df, pubmed_df))
-        #
-        # print(pipelines.get_clinical_trials_mentions(drugs_df, clinical_trials_df))
+        logging.info('Ended generates link graph generation')
 
+        # Get journal mentionning most number of drugs
+        logging.info('Started number of distinct drugs by journal')
+        with open(cfg['paths']['output_path']) as data_file:
+            mentions_data = json.load(data_file)
 
+        df = pd.json_normalize(mentions_data, 'mentions', ['drug'], record_prefix='mentions_')
+        nb_uniq_mentions_journal = df.groupby('mentions_journal')\
+            .drug.nunique()\
+            .sort_values(ascending=False)\
+            .reset_index(name='count')
+        print(nb_uniq_mentions_journal)
+
+        logging.info('Ended number of distinct drugs by journal')
 
     except Exception:
-        logging.exception('An error occured check log.')
+        logging.exception('An error occurred check log.')
         traceback.print_exc()
