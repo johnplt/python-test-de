@@ -1,5 +1,7 @@
 paths:
-  drugs_path:
-  pubmed_csv_path:
-  pubmed_json_path:
-  clinical_trials_path:
+  drugs_path: # path of drugs data
+  pubmed_csv_path: # path of csv pubmed data
+  pubmed_json_path: # path of json pubmed data
+  clinical_trials_path: # path of clinical trials data
+  output_path: # path of the json link graph result
+  logs_path: # path of the folder for log path
