@@ -22,7 +22,7 @@ python-test-de
 +-- requirements.txt
 ```
 Les data pipelines sont codés dans le module *pipelines.py*. Il contient 
-des pipelines destinées:
+des pipelines destinées à:
 
 1 - Lire et structurer les données sources dans un dataframe pandas (Les données médicaments et les données d'articles)
 
@@ -37,8 +37,8 @@ Pour lancer le code :
 - Faire un clone du repo depuis git
 - Récupérer les datas (je ne les ai pas mis sur le repo ne connaissant pas le niveau de confidentialité).
 - Compléter le fichier de configuration global_config_template.yml avec les bons paths
-- Dans un IDE, compléter les configurations de Run du code (Ne pas oublier le ou les arguments, en l'occurence ici le fichier de configuration) et lancer le code si toutes les étaps d'avant sont vérifier
-- Dans une console Windows ou linux, se placer à la racine du repo puis lancer la commande *python python_test_de/main.py --global_config_file_path conf/global_conf.yml*. Sous un virtual env Python, penser à activer le virtual env avec le commande *source activate my_env*.
+- Dans un IDE, compléter les configurations de Run du code (Ne pas oublier le ou les arguments, en l'occurence ici le fichier de configuration) et lancer le code si toutes les étapes précédentes sont vérifiées.
+- Dans une console Windows ou linux, se placer à la racine du repo puis lancer la commande *python python_test_de/main.py --global_config_file_path conf/global_conf.yml*. Sous un virtual env Python, penser à activer le virtual env avec la commande *source activate my_env*.
 Autre méthode => Créer à la racine un script shell qui contient la commande d'activation du script python ainsi que la commande Python et qui va prendre en argument également le fichier de configuration puis lancer le script shell => ./myscript.sh conf/global_conf.yml. Ce script et cette commande peuvent être également utilisés pour ordonnancer le traitement avec un BashOperator dans un DAG Airflow.
 
 Question 6 :
