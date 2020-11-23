@@ -5,7 +5,7 @@ import pandas as pd
 import os
 import sys
 import logging
-from python_test_de import constant
+import constant
 import json
 
 

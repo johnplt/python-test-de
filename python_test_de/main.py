@@ -3,8 +3,8 @@
 import argparse
 import logging
 import traceback
-from python_test_de import utils
-from python_test_de import pipelines
+import utils
+import pipelines
 import pandas as pd
 import json
 from datetime import datetime
